@@ -25,7 +25,7 @@ def app():
 ### Title
 
     st.title("Calculate my Carbon Emission Trip")
-    gsheet_url = st.secrets["https://docs.google.com/spreadsheets/d/19Stp_EFjRXvWFzaLuG1f8qsfZCbzt9oDuCV3NGRE1sM/edit#gid=532282035"]
+    gsheet_url = "https://docs.google.com/spreadsheets/d/19Stp_EFjRXvWFzaLuG1f8qsfZCbzt9oDuCV3NGRE1sM/edit#gid=532282035"
     conn = connect()
     rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
     df = pd.DataFrame(rows)
