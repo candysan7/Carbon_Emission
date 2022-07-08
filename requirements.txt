@@ -4,4 +4,4 @@ sklearn==0.0
 streamlit==1.8.1
 streamlit-aggrid==0.2.3.post2
 numpy==1.21.6
-gsheets==0.6.1
+gsheetsdb==0.1.13.1
