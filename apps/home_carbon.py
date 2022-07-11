@@ -31,32 +31,30 @@ def app():
     df = pd.DataFrame(rows)
 
     # st.write(df)
-    with st.form(key='bkey'):
-        car_make = list(sorted(df['Make'].unique()))
-        car_make_select = st.selectbox('Car Manufacturer',car_make)
-        car_make_select = str(car_make_select)
+    # with st.form(key='bkey'):
+    car_make = list(sorted(df['Make'].unique()))
+    car_make_select = st.selectbox('Car Manufacturer',car_make) #1ST SELECT BOX 
+    # car_make_select = str(car_make_select)
+    #     
+    car_model_df = df.loc[(df['Make']==car_make_select)] 
+    
+    car_model = list(sorted(car_model_df['Model'].unique()))
+    car_model_select = st.selectbox('Car Model',car_model)
 
-        car_model_df = df.loc[(df['Make']==car_make_select)]
+    model_make_df = car_model_df.loc[car_model_df["Model"]==car_model_select]
 
-        # st.write(car_model_df)
+    miles_drive = st.number_input('Miles Driven', min_value=0.0, max_value=500.0, step=1e-6,format="%.2f")
 
-        car_model = list(sorted(car_model_df['Model'].unique()))
-        car_model_select = st.selectbox('Car Model',car_model)
+    carbon_usage = list(model_make_df['_12'])[0] ### conversion for df to column name is not right
 
-        model_make_df = car_model_df.loc[car_model_df["Model"]==car_model_select]
+    # st.write(carbon_usage)
 
-        miles_drive = st.number_input('Miles Driven', min_value=0.0, max_value=500.0, step=1e-6,format="%.2f")
-
-        carbon_usage = list(model_make_df['_12'])[0] ### conversion for df to column name is not right
-
-        # st.write(carbon_usage)
-
-        # if st.button('Calculate My Carbon Emission!'): 
-        if st.form_submit_button('Calculate My Carbon Emission!'):
-            carbon_emission = str(round(miles_drive*carbon_usage,2))
-            display_emission = "Your trip added " + carbon_emission + " grams of C02 to the atmosphere"
-            st.subheader(display_emission)
-            
-            st.markdown('$this is 90% higher than$')
-            st.markdown('$this is 90 higher than the us average __ $')
-            st.success('50% lower than average')
+    if st.button('Calculate My Carbon Emission!'): 
+    # if st.form_submit_button('Calculate My Carbon Emission!'):
+        carbon_emission = str(round(miles_drive*carbon_usage,2))
+        display_emission = "Your trip added " + carbon_emission + " grams of C02 to the atmosphere"
+        st.subheader(display_emission)
+        
+        st.markdown('$this is 90% higher than$')
+        st.markdown('$this is 90 higher than the us average __ $')
+        st.success('50% lower than average')
