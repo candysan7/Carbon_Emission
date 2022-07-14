@@ -11,7 +11,7 @@ def app():
 
     st.sidebar.title("Feedback")
     st.sidebar.info(
-        "This an open source project completed for KPMG and we are very open to any **feedback** you have. You are more than welcome welcome to **contribute** your "
+        "This an open source project completed for KPMG and we are very open to any **feedback** you have. You are more than welcome to **contribute** your "
         "questions, concerns, and suggestions at "
         "[email](andyxian@usc.edu) or at our "
         "[github](https://github.com/candysan7). "
@@ -22,7 +22,7 @@ def app():
         """
         This app is maintained by [Andy Xiang](https://www.linkedin.com/in/andy-xiang/). 
         Please feel free to reach out to us if you have any questions. 
-        You can learn more about instiution at [www.usc.edu](https://www.usc.edu/).
+        You can learn more about institution at [www.usc.edu](https://www.usc.edu/).
     """)
 
     st.title("Data")
